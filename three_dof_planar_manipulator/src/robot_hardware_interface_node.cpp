@@ -89,8 +89,10 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "robot_hardware_interface");
     ros::NodeHandle nh;
     ros::AsyncSpinner spinner(2); // 2 threads for controller service and for the Service client used to get the feedback from ardiuno
-    spinner.start();
+   
     ROBOTHardwareInterface ROBOT(nh);
-    ros::spin();
+    spinner.start();
+    ros::waitForShutdown();
+
     return 0;
 }
